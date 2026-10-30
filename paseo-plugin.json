@@ -2,6 +2,7 @@
   "id": "pin-chat",
   "name": "Pin Chat",
   "description": "Save assistant replies and revisit them in a pinned messages screen.",
+  "icon": "icon.png",
   "requirements": {
     "paseo": ">=0.13.1"
   }

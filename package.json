@@ -1,20 +1,43 @@
 {
-  "name": "pin-chat",
-  "private": true,
-  "version": "0.0.0",
+  "name": "paseo-plugin-pin-chat",
+  "version": "0.1.0",
+  "description": "Pin assistant replies in Paseo and read them back per chat or across the host.",
+  "license": "MIT",
+  "author": "MoonByteShaker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoonByteShaker/pin-chat.git"
+  },
+  "homepage": "https://github.com/MoonByteShaker/pin-chat#readme",
+  "bugs": "https://github.com/MoonByteShaker/pin-chat/issues",
+  "keywords": [
+    "paseo",
+    "paseo-plugin",
+    "pins",
+    "bookmarks",
+    "chat"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "paseo-plugin.json",
     "OVERVIEW.md",
-    "index.client.ts",
+    "README.md",
+    "LICENSE",
+    "icon.png",
     "index.client.tsx",
     "index.server.ts",
-    "index.server.tsx",
     "client/",
     "server/",
     "shared/"
   ],
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck"
   },
   "devDependencies": {
     "@getpaseo/plugin": "0.13.1",
