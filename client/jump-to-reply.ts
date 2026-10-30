@@ -31,14 +31,14 @@ import { replyRowId } from "./pin-actions";
  * to.
  */
 
-/** Upper bound on the walk. Long chats need many host-side history steps. */
-const WALK_BUDGET_MS = 15000;
-/** Give the host enough time to settle a virtualized window after each gesture. */
-const STEP_SETTLE_MS = 250;
+/** Upper bound on the walk. Older chats can require many virtualized pages. */
+const WALK_BUDGET_MS = 30000;
+/** Give the host enough time to settle each virtualized window. */
+const STEP_SETTLE_MS = 350;
 /** How far past the top one wheel gesture pushes. */
 const WHEEL_DELTA_Y = -1400;
-/** Consecutive steps with no new oldest row before history is exhausted. */
-const STALLED_STEPS = 8;
+/** Consecutive steps with no new mounted row before history is exhausted. */
+const STALLED_STEPS = 20;
 /** How often to look for the chat's container while it opens. */
 const ATTACH_INTERVAL_MS = 100;
 /** How long to keep looking for the container before reporting it absent. */
