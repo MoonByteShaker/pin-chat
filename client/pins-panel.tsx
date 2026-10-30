@@ -7,7 +7,7 @@ import {
   type PluginWorkspacePanelProps,
 } from "@getpaseo/plugin/client";
 import { Icon, Markdown, ScrollView, useToast } from "@getpaseo/plugin/client/ui";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { pinChatSettings, type PinnedMessage } from "../shared/pins";
 import { jumpToReply } from "./jump-to-reply";
@@ -40,7 +40,7 @@ function PinCard({
   const settings = useSettings(pinChatSettings);
   const toast = useToast();
   const agentTitle = useAgent(pin.agentId, (agent) => agent.title);
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const lifetime = useRef<AbortController | null>(null);
 
   // The panel outlives a jump, so an in-flight one is cancelled on the way out.
@@ -73,7 +73,9 @@ function PinCard({
       return;
     }
     if (result.status === "exhausted") {
-      toast.error("That reply is not in this chat's history.");
+      // A virtualized window can still lag behind the host's own search index;
+      // this is not proof that the saved reply is absent.
+      toast.error("Paseo is still loading that reply. Try Show again in a moment.");
     }
   }
 
@@ -88,9 +90,6 @@ function PinCard({
         backgroundColor: theme.colors.surface1,
       },
       header: { flexDirection: "row" as const, alignItems: "center" as const, gap: 8 },
-      // The heading is the collapse control: it is the row a reader aims at when
-      // they want a long pinned message out of the way. The label beside it is
-      // the jump, so the two never fight over the same tap.
       toggle: { flex: 1, flexDirection: "row" as const, alignItems: "center" as const, gap: 8 },
       toggleText: { flex: 1 },
       agent: { color: theme.colors.accent, fontSize: 12, fontWeight: "600" as const },

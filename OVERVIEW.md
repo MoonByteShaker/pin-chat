@@ -12,9 +12,9 @@ Pin assistant replies per chat, then read them back either per chat or across th
    the fallback while another plugin renders the replies (see *Coexisting with other reply
    renderers*). **Open** switches to the **Pinned messages** panel for the current chat: it
    shows only replies pinned in this chat, newest first.
-4. In the panel, click a card's heading (chat title and timestamp) to collapse or expand
-   its text, **Show** to jump to the reply in its chat, and the pin icon on the right of
-   the heading to unpin it.
+4. In the panel, each card is compact by default: it shows the source chat and timestamp, **Show**
+   jumps to the reply in its chat, and the pin icon on the right unpins it. Click the card heading
+   to expand the full pinned reply text; click it again to collapse it.
 
 Other entry points:
 

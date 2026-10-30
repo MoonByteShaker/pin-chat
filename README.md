@@ -22,7 +22,7 @@ Three ways in, depending on how far you are from the chat:
 
 **The host-wide list.** The panel-sidebar *New tab* menu → *Pinned messages* shows every pin on this host, newest first, each card headed by the chat it came from. That is the one to open when you remember the answer but not the conversation.
 
-In the panel, a card's heading collapses and expands its text, the pin icon on the right unpins it, and **Show** jumps to the reply.
+In the panel, each card is intentionally compact by default: it shows the source chat and timestamp, **Show** jumps to the original reply, and the pin icon on the right unpins it. Click the card heading to expand the full pinned reply text; click it again to collapse it.
 
 ## Show
 
@@ -34,7 +34,7 @@ This is harder than it should be, because Paseo gives a plugin no way to scroll 
 
 **Beautiful Chat with *Assistant markdown* on takes the Pin button away.** This is a Paseo limitation, not a choice.
 
-Paseo runs timeline transformers in the order its daemon returns them, which is sorted by plugin id, and keeps only the first one that claims an assistant message. There is no priority field. `beautiful-chat` sorts before `pin-chat`, so while Beautiful Chat is rendering the replies, Pin Chat's transformer never runs and its footer never enters the timeline. Reordering the two is not something a plugin can ask for: a transformer may only emit `type: "plugin"` items, so the native row Paseo hangs its footer off cannot be produced, and a plugin's renderer is only ever resolved inside the plugin that claimed the item.
+In the panel, each card is intentionally compact: it shows the source chat and timestamp, **Show** jumps to the original reply, and the pin icon on the right unpins it. The reply body is not repeated in the panel; the panel is a bookmark list, not a second transcript.
 
 Two ways out:
 

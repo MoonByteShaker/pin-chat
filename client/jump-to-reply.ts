@@ -31,21 +31,18 @@ import { replyRowId } from "./pin-actions";
  * to.
  */
 
-/** Upper bound on the walk. A long conversation needs many steps, but not endless ones. */
-const WALK_BUDGET_MS = 6000;
-/** How long a single step may take before the walk gives up on the host. */
-const STEP_SETTLE_MS = 80;
+/** Upper bound on the walk. Long chats need many host-side history steps. */
+const WALK_BUDGET_MS = 15000;
+/** Give the host enough time to settle a virtualized window after each gesture. */
+const STEP_SETTLE_MS = 250;
 /** How far past the top one wheel gesture pushes. */
 const WHEEL_DELTA_Y = -1400;
-/**
- * Consecutive steps without the row count moving that mean the history is
- * exhausted. More than one, because a step can land mid-render.
- */
-const STALLED_STEPS = 3;
+/** Consecutive steps with no new oldest row before history is exhausted. */
+const STALLED_STEPS = 8;
 /** How often to look for the chat's container while it opens. */
 const ATTACH_INTERVAL_MS = 100;
 /** How long to keep looking for the container before reporting it absent. */
-const ATTACH_DEADLINE_MS = 3000;
+const ATTACH_DEADLINE_MS = 5000;
 /** The row the host builds for one of this plugin's items. */
 const ROW_SELECTOR_PREFIX = "pin-chat/";
 /** How far below the top edge a jumped-to reply lands. */
